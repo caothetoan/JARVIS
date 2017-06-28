@@ -1,184 +1,67 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>JARVIS AI Web control Voice To Text</title>
-
-   <meta property="article:author" content="Cao The Toan" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>JARVIS AI Web control</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<meta property="article:author" content="Cao The Toan" />
 	<meta name="author" content="caothetoan@gmail.com"/>
- 
+	<link rel="shortcut icon" href="./assets/img/favicon.png" type="image/x-icon">
+	
+	<link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="./assets/css/styles.css" rel="stylesheet">
  <!--
- <link href="favicon.png" rel="shortcut icon">
+ 
   <link href="//fonts.googleapis.com/css?family=Roboto|Montserrat:400,700|Open+Sans:400,300,600" rel="stylesheet">
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-	<link href="/assets/css/styles.css" rel="stylesheet">
-	-->
-	<script src="https://sdk.amazonaws.com/js/aws-sdk-2.41.0.min.js"></script>
-	<style language="text/css">
-	body{
-	font-size: 1.5em;
-	
-	}
-		#conversation{
-			
-			width: 100%; height: 100%; border: 1px solid #ccc; background-color: #dbdee1;
-			/*padding: 4px; */
-			overflow: scroll
-		}
-		.bot-page{
-		 padding: 10px;
-		
-		}
-		
-.bot-page .bot-page-body-left.with-webchat {
-    right: 50%;
-}
-.bot-page .bot-page-body-left {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    overflow: auto;
-    background-color: #fff;
-    transition: right .1s ease-out;
-	 padding: 10px;
-}
-
-.bot-page .bot-page-body-right.with-webchat {
-    width: 50%;
-}
-.bot-page .bot-page-body-right {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 0;
-    top: 0;
-    background-color: #fff;
-    transition: width .1s ease-out;
-}
-		.wc-chatview-panel {
-    overflow: hidden;
-    position: absolute;
-    right: 0;
-    left: 0;
-    top: 0;
-    bottom: 0;
-}
-		.wc-header {
-    background-color: #3a96dd;
-    box-shadow: 0 1px rgba(0, 0, 0, 0.2);
-    box-sizing: content-box;
-    color: #fff;
-    font-weight: 500;
-    height: 30px;
-    left: 0;
-    letter-spacing: 0.5px;
-    padding: 8px 8px 0 8px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: 1;
-}
-.wc-message-groups {
-    bottom: 50px;
-    left: 0;
-    transform: translateY(0);
-    overflow-x: hidden;
-    overflow-y: scroll;
-   /* padding: 10px;*/
-    position: absolute;
-    right: 0;
-    top: 38px;
-    transition: transform 0.2s cubic-bezier(0, 0, 0.5, 1);
-}
-	
-.wc-console {
-    border: 5px solid #dbdee1;
-    bottom: 0;
-    box-sizing: border-box;
-    height: 50px;
-    left: 0;
-    position: absolute;
-    right: 0;
-	padding: 4px;
-}
-.wc-console > * {
-    position: absolute;
-    top: 0;
-    vertical-align: middle;
-}
-.wc-console textarea, .wc-console input[type=text] {
-    border: none;
-    height: 100%;
-    outline: none;
-    padding: 0;
-    resize: none;
-    width: 100%;
-}
-	input#wisdom {
-			/*padding: 4px;
-			width: 400px;
-			
-			*/
-			font-size: 1em;
-			
-		}
-
-		input::placeholder {
-			color: #ccc;
-			font-style: italic;
-		}
-
-		p.userRequest {
-			margin: 4px;
-			padding: 4px 10px 4px 10px;
-			border-radius: 4px;
-			min-width: 50%;
-			max-width: 85%;
-			float: left;
-			background-color: #7d7;
-		}
-
-		p.lexResponse {
-			margin: 4px;
-			padding: 4px 10px 4px 10px;
-			border-radius: 4px;
-			text-align: right;
-			min-width: 50%;
-			max-width: 85%;
-			float: right;
-			background-color: #bbf;
-			font-style: italic;
-		}
-
-		p.lexError {
-			margin: 4px;
-			padding: 4px 10px 4px 10px;
-			border-radius: 4px;
-			text-align: right;
-			min-width: 50%;
-			max-width: 85%;
-			float: right;
-			background-color: #f77;
-		}
+  <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet"> 
+	-->	
+	<style language="text/css">	
 	</style>
 </head>
 <body onload="initPage()">
-	
-<div ui-view>
-	<div class="bot-page">
-		<div class="bot-page-body-left with-webchat">
-			<h1 style="text-align:  left">
-				<a target="_blank" href="http://jarvis.vnit.top">Jarvis bot</a>	
-				</h1>
-			<button class="btn btn-lg" style="height: 100px;width: 100%;"
+	<div ng-controller="NavbarCtrl" class="navbar navbar-default navbar-static-top">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="/"><i class="ion-ios7-pulse-strong"></i> Jarvis</a>
+  </div>
+  <ul class="nav navbar-nav">
+    <li><a href="/#/">Home</a></li>
+    <li ng-if="isAuthenticated()"><a href="/#/profile">Profile</a></li>
+  </ul>
+  <ul ng-if="!isAuthenticated()" class="nav navbar-nav pull-right">
+    <li><a href="/#/login">Login</a></li>
+    <li><a href="/#/signup">Sign up</a></li>
+  </ul>
+  <ul ng-if="isAuthenticated()" class="nav navbar-nav pull-right">
+    <li><a href="/#/logout">Logout</a></li>
+  </ul>
+</div>
+	<div class="container">
+		<div class="panel panel-default">
+    <div class="panel-heading">Home Page</div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-12">
+          		  
+	<div class=" bot-page">
+		<div class="row">
+				
+				<div class="col-xs-12 text-center">
+					<h2 class="verb-title">I <span class="verb"></span> things.</h2>
+				</div>
+				
+		</div>
+			
+		<div class="col-md-6 bot-page-body-left with-webchat">
+			
+			<button class="btn btn-primary"
+			style=""
 			id="btn" onclick="btnClick()">Listen</button>
 				<h3>Detected: </h3><p id="detectedText"></p>
 				<br>
-				<h3>JARVIS: </h3>
+				<h3><a target="_blank" href="http://jarvis.vnit.top">Jarvis reply</a>: </h3>
 				<p id="result"></p>
 				
 				<hr />
@@ -210,8 +93,8 @@
 			  <a target="_blank" href="https://caothetoan.github.io">Cao The Toan</a> 
 			</p>
 		</div>	
-		<div class="bot-page-body-right with-webchat">
-			<div class="wc-header"><span>Chat</span></div>
+		<div class=" bot-page-body-right with-webchat">
+			<div class="wc-header"><span>Chat with JARVIS</span></div>
 			
 			<div class="wc-message-pane">
 				<div class="wc-message-groups">	
@@ -220,277 +103,32 @@
 			</div>
 			<div class="wc-console">
 			<form id="chatform" style="margin-top: 10px" onsubmit="return pushChat();">
-				<input type="text" id="wisdom" size="80" value="" placeholder="Type anything...">
+				<input class="col-md-12" type="text" id="wisdom" size="80" value="" placeholder="Type anything...">
 			</form>
 			</div>
 		</div>
-	</div>	
-</div>	
-	<script type="text/javascript">
-		var url = 'https://6ed07515.ngrok.io/jarvis'
-		// set the focus to the input box
-		document.getElementById("wisdom").focus();
-
-		var lexUserId = 'chatbot-demo' + Date.now();
-		var sessionAttributes = {};
-
-		function pushChat() {
-
-			// if there is text to be sent...
-			var wisdomText = document.getElementById('wisdom');
-			if (wisdomText && wisdomText.value && wisdomText.value.trim().length > 0) {
-
-				// disable input to show we're sending it
-				var wisdom = wisdomText.value.trim();
-				wisdomText.value = 'Thinking...';
-				wisdomText.locked = true;
-
-				// send it to the Lex runtime
-				var params = {
-					botAlias: '$LATEST',
-					botName: 'BookTrip',
-					inputText: wisdom,
-					userId: lexUserId,
-					sessionAttributes: sessionAttributes
-				};
-				showRequest(wisdom);
-				
-				sendRequest(wisdom, 
-					function(data) {						
-						if (data) {
-							// capture the sessionAttributes for the next cycle
-							sessionAttributes = data.sessionAttributes;
-							// show response and/or error/dialog status
-							showResponse(data);
-							
-							textToSpeech(data);
-							document.getElementById("result").innerHTML = data;
-						
-						}
-						
-						// re-enable input
-						wisdomText.value = '';
-						wisdomText.locked = false;
-					},
-					function(err) {
-						if (err) {
-						console.log(err, err.stack);
-						showError('Error:  ' + err.message + ' (see console for details)')
-						}
-					}
-				);
-			
-			}//
-			// we always cancel form submission
-			return false;
-		}
-		function sendRequest(query, success, error)
-		{
-			var query = '{"query":"'+query+'"}';
-			console.log('Query-->'+query);
-		    var xhttp = new XMLHttpRequest();
-		    xhttp.onreadystatechange = function() {
-		        if (this.readyState == 4 && this.status == 200) {
-		        	console.log('Response-->'+this.responseText);
-		        	var resp = JSON.parse(this.responseText);
-		        	if (success)
-						success(resp.response);
-					
-		       }
-		    };
-		    xhttp.open("POST", url, true);
-		    xhttp.setRequestHeader("Content-type", "application/json");
-		    xhttp.setRequestHeader("Accept", "application/json");
-		    xhttp.send(query);
-		}
-		function showRequest(daText) {
-
-			var conversationDiv = document.getElementById('conversation');
-			var requestPara = document.createElement("P");
-			requestPara.className = 'userRequest';
-			requestPara.appendChild(document.createTextNode(daText));
-			conversationDiv.appendChild(requestPara);
-			conversationDiv.scrollTop = conversationDiv.scrollHeight;
-		}
-
-		function showError(daText) {
-
-			var conversationDiv = document.getElementById('conversation');
-			var errorPara = document.createElement("P");
-			errorPara.className = 'lexError';
-			errorPara.appendChild(document.createTextNode(daText));
-			conversationDiv.appendChild(errorPara);
-			conversationDiv.scrollTop = conversationDiv.scrollHeight;
-		}
-
-		function showResponse(lexResponse) {
-
-			var conversationDiv = document.getElementById('conversation');
-			var responsePara = document.createElement("P");
-			responsePara.className = 'lexResponse';
-			if (lexResponse) {
-				responsePara.appendChild(document.createTextNode(lexResponse));
-				responsePara.appendChild(document.createElement('br'));
-			}
-			if (lexResponse.dialogState === 'ReadyForFulfillment') {
-				responsePara.appendChild(document.createTextNode(
-					'Ready for fulfillment'));
-				// TODO:  show slot values
-			} else {
-				//responsePara.appendChild(document.createTextNode(
-					//'(' + lexResponse.dialogState + ')'));
-			}
-			conversationDiv.appendChild(responsePara);
-			conversationDiv.scrollTop = conversationDiv.scrollHeight;
-		}
-	</script>
-	
-	<script>
-		
-		var isListening = false;
-		var recognition;
-		var final_transcript = '';
-		var interim_transcript = '';
-		var result = '';
-		var start_timestamp;
-		var detectedText = document.getElementById("detectedText");
-		
-		function btnClick(){
-			console.log("isListening-->"+isListening);
-			if(isListening){
-				console.log("need to stop..");
-				isListening = false;
-				document.getElementById("btn").innerHTML = 'Listen';
-				recognition.stop();
-			}else{
-				console.log("need to start..");
-				isListening = true;
-				document.getElementById("btn").innerHTML = 'Stop';
-				startListening();
-			}
-		}
-
-		function startListening() {
-			console.log("starting to listen...");
-			
-			final_transcript = '';
-			interim_transcript = '';
-			start_timestamp = event.timeStamp;
-			detectedText.innerHTML = final_transcript;
-			
-			recognition.lang = "en-GB";
-			recognition.start();
-
-		}
-
-		function initPage() {
-			if (!('webkitSpeechRecognition' in window)) {
-				console.log("need upgrade...");
-				upgrade();
-			} else {
-				console.log("no upgrade required...");
-				recognition = new webkitSpeechRecognition();
-				recognition.continuous = false;
-				recognition.interimResults = true;
-
-				recognition.onstart = function() {
-					console.log("onstart...");
-				};
-
-				recognition.onresult = function(event) {
-					console.log("onresult...");
-					interim_transcript = '';
-					final_transcript = '';
-					result = '';
-
-					for (var i = event.resultIndex; i < event.results.length; ++i) {
-						if (event.results[i].isFinal) {
-							final_transcript += event.results[i][0].transcript;
-						} else {
-							interim_transcript += event.results[i][0].transcript;
-						}
-					}
-					console.log("Interim-->" + interim_transcript);
-					console.log("Detected-->" + final_transcript);
-					if(final_transcript.length > 5 ){
-						getResult(final_transcript);
-						isListening = false;
-						document.getElementById("btn").innerHTML = 'Listen';
-					}
-					detectedText.innerHTML = final_transcript;
-				}
-
-				recognition.onerror = function(event) {
-					console.log("onerror...");
-
-					if (event.error == 'no-speech') {
-						console.log('info_no_speech');
-						alert('no speech detected');
-					}
-					if (event.error == 'audio-capture') {
-						console.log('info_no_microphone');
-						alert('no microphone detected');
-					}
-					if (event.error == 'not-allowed') {
-						console.log('info_not_allowed');
-						if (event.timeStamp - start_timestamp < 100) {
-							console.log('info_blocked');
-							alert('info_blocked');
-						} else {
-							console.log('info_denied');
-							alert('denied');
-						}
-					}
-				};
-
-				recognition.onend = function() {
-					console.log("onend...");
-				};
-			}
-		}
-		
-		function getResult(query) {
-			
-			var query = '{"query":"'+query+'"}';
-			console.log('Query-->'+query);
-		    var xhttp = new XMLHttpRequest();
-		    xhttp.onreadystatechange = function() {
-		        if (this.readyState == 4 && this.status == 200) {
-		        	console.log('Response-->'+this.responseText);
-		        	var resp = JSON.parse(this.responseText);
-		        	var reply = resp.response;
-		        	textToSpeech(reply);
-		            document.getElementById("result").innerHTML = reply;
-		       }
-		    };
-		    xhttp.open("POST", url, true);
-		    xhttp.setRequestHeader("Content-type", "application/json");
-		    xhttp.setRequestHeader("Accept", "application/json");
-		    xhttp.send(query); 
-		}
-
-		function textToSpeech(speech){
-			var msg = new SpeechSynthesisUtterance(speech);
-			var voices = window.speechSynthesis.getVoices();
-	        msg.default = false;
-	        msg.voice = voices.filter(function(voice) { return voice.name == 'Google UK English Male'; })[0];
-	        msg.lang = 'en-GB'; //Also added as for some reason android devices used for testing loaded spanish language 
+	</div>
+		  
+        </div>
         
-			// var voices = window.speechSynthesis.getVoices();
-			// msg.voice = voices[2]; // Note: some voices don't support altering params
-			// msg.voiceURI = 'male';
-			// msg.volume = 1; // 0 to 1
-			// msg.rate = 1.3; // 0.1 to 10
-			// msg.pitch = 1; //0 to 2
-			// msg.text = speech;
-			// msg.lang = 'en-US';
+      </div>
+    </div>
+    <div class="panel-footer text-center">
+      <ul class="list-inline">
+        <li class="ng-binding"><i class="ion-star"></i> 8,048 stars</li>
+        <li class="ng-binding"><i class="ion-fork-repo"></i> 1,270 forks</li>
+        <li class="ng-binding"><i class="ion-pull-request"></i> 262 issues</li>
+      </ul>
+    </div>
+  </div>
+	
+	</div>	
 
-			// msg.onend = function(e) {
-			//   console.log('Finished in ' + event.elapsedTime + ' seconds.');
-			// };
-			window.speechSynthesis.speak(msg);
-		}
-
-	</script>
+	<script src="/assets/js/chat.js" type="text/javascript"></script>	
+	<script src="/assets/js/recognition.js"></script>
+	
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+	<script src="/assets/js/typed.min.js"></script>
+	<script src="/assets/js/global.js"></script>
 </body>
 </html>
