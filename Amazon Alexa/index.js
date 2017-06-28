@@ -1,4 +1,4 @@
-var APP_ID = undefined;
+var APP_ID = 'amzn1.ask.skill.f216b379-c39b-4291-928c-85ec3cc39277';
 var http = require('http')
 var https = require('https');
 /**
@@ -10,7 +10,7 @@ var AlexaSkill = require('./AlexaSkill');
 /**
  * URL for JARVIS service
  */
-var jarvis_url = 'https://37b69e6b.ngrok.io/jarvis';
+var jarvis_url = 'https://6ed07515.ngrok.io/jarvis';//https://6ed07515.ngrok.io/jarvis
 
 var cardTitle = 'J.A.R.V.I.S.';
 

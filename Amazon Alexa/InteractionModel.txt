@@ -17,6 +17,7 @@
 
 
 AskQuestionIntent {multiply ten with six|question}
-AskQuestionIntent {who is Rahul Gandhi|question}
+AskQuestionIntent {who is Cao The Toan|question}
 AskQuestionIntent {please tell me what is two plus six minus seven divided by cube of three|question}
 AskQuestionIntent {hi|question}
+AskQuestionIntent {please turn on the lights|question}

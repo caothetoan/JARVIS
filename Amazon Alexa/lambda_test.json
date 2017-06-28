@@ -1,0 +1,46 @@
+{
+  "session": {
+    "new": false,
+    "sessionId": "amzn1.echo-api.session.f216b3791",
+    "attributes": {},
+    "user": {
+      "userId": "amzn1.ask.account.f216b37931"
+    },
+    "application": {
+      "applicationId": "amzn1.ask.skill.f216b379-c39b-4291-928c-85ec3cc39277"
+    }
+  },
+  "version": "1.0",
+  "request": {
+    "locale": "en-US",
+    "timestamp": "2016-10-27T21:06:28Z",
+    "type": "IntentRequest",
+    "requestId": "amzn1.echo-api.request.f216b37934342",
+    "intent": {
+      "slots": {
+        "question": {
+          "value": "hi"
+        }
+      },
+      "name": "AskQuestionIntent"
+    }
+  },
+  "context": {
+    "AudioPlayer": {
+      "playerActivity": "IDLE"
+    },
+    "System": {
+      "device": {
+        "supportedInterfaces": {
+          "AudioPlayer": {}
+        }
+      },
+      "application": {
+        "applicationId": "amzn1.ask.skill.[unique-value-here]"
+      },
+      "user": {
+        "userId": "amzn1.ask.account.[unique-value-here]"
+      }
+    }
+  }
+}
