@@ -8,23 +8,26 @@ import os
 def process_json(json, query, typ):
     print("result json-> ", json)
 
-    result = get_answer(json)
+    # get answer result
+	result = get_answer(json)
     if len(result) > 0:
-        result = "Here's what I have found about " + query[:-1] + "! " + result
+        result = "Here's what I have found answer about " + query[:-1] + "! " + result
     else:
-        result = get_definition(json)
+        # Definition
+		result = get_definition(json)
         if len(result) > 0:
-            result = "Here's what I have found about " + query[:-1] + "! " + result
+            result = "Here's what I have found definition about " + query[:-1] + "! " + result
         else:
             result = get_abstract(json)
             if len(result) > 0:
-                result = "Here's what I have found about " + query[:-1] + "! " + result
+                result = "Here's what I have found abstract about " + query[:-1] + "! " + result
             else:
                 result = get_text(json)
                 if len(result) > 0:
-                    result = "Here's what I have found about " + query[:-1] + "! " + result
-                elif typ == 'mth':# mth
-                    result = "Can't evaluate expression."
+                    result = "Here's what I have found text about " + query[:-1] + "! " + result
+                # need test more typ == 'mth'
+				#elif typ == 'mth':# mth
+                    #result = "Can't evaluate expression."
                 else:
                     result = "Sorry! I couldn't find anything around " + query[:-1]
 

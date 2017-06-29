@@ -17,7 +17,7 @@ import classifier
 # print("8 -> cmd", j.get_context("its dark in here"))
 # print("9 -> wel", j.get_context("hey man, What's your name"))
 # print("10 -> wel", j.get_context("I am Abhinav Tyagi. who are you?"))
-# print("11 -> wel", j.get_context("Yo! we are Indians"))
+# print("11 -> wel", j.get_context("Yo! we are Vietnamese"))
 # print("12 -> wel", j.get_context("I am Jack"))
 # print("13 -> rand", j.get_context("in India, where are dessert?")) #failed
 # print("14 -> rand", j.get_context("where was typewriter invented"))
@@ -32,15 +32,15 @@ import classifier
 
 # print(classifier.classify("its dark in here"))
 # print(classifier.classify("hey man, What's your name"))
-# print(classifier.classify("hey man, I am Abhinav Tyagi"))
-# print(classifier.classify("Yo! we are Indians"))
+# print(classifier.classify("hey man, I am Cao The Toan"))
+# print(classifier.classify("Yo! we are Vietnamese"))
 # print(classifier.classify("I am Jack"))
 # print(classifier.classify("in India, where are dessert?"))
 # print(classifier.classify("please turn on the lights"))
 
 # print(classifier.classify("Uttar Pradesh"))
-print(classifier.classify("Who is Sachin Tendulkar"))
-print(classifier.classify("Temperature in New Delhi"))
+print(classifier.classify("Who is Obama"))
+print(classifier.classify("Temperature in Hanoi"))
 
 # subtract 4 from minus 3
 
