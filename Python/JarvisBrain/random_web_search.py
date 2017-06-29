@@ -23,7 +23,7 @@ def process_json(json, query, typ):
                 result = get_text(json)
                 if len(result) > 0:
                     result = "Here's what I have found about " + query[:-1] + "! " + result
-                elif typ == 'mth':
+                elif typ == 'mth':# mth
                     result = "Can't evaluate expression."
                 else:
                     result = "Sorry! I couldn't find anything around " + query[:-1]
@@ -79,6 +79,7 @@ def get_weather_info(query):
     api_key = config.get('APIKeys', 'weather')
     print(api_key)
 
+	#APPID=d9ce01906a466d5b7a74402fba00c9
     # http://api.openweathermap.org/data/2.5/weather?q=London&appid=XXXXX
     url_endpoint = 'http://api.openweathermap.org/data/2.5/weather'
     param = {'q': query[:-1], 'appid': api_key}
@@ -99,7 +100,7 @@ def get_weather_info(query):
 
     return "Temperature is " + str(temp) + " degree celsius in " + query
 
-
+# function get web result main
 def get_web_result(text, typ):
     is_weather = False
 
@@ -139,7 +140,8 @@ def get_web_result(text, typ):
         print("resp -> ", resp.json())
         result_json = resp.json()
 
-        result = process_json(result_json, query, typ)
+        # process json response from server search api
+		result = process_json(result_json, query, typ)
         print("result --> ", result)
 
     return result

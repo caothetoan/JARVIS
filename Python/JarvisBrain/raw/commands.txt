@@ -23,6 +23,7 @@ turn right
 turn left
 please go left
 please go right
+go
 go forward
 go backward
 move forward for 10 seconds

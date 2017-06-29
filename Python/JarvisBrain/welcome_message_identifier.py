@@ -3,10 +3,11 @@
 
 def get_welcome_msg(text, chunked_data):
     p0 = ["hi", "hello", "hey", "yo"]
-    p1 = ["how", "how've", "what's up", "doing"]
+    p1 = ["how are", "how've", "what's up", "doing"]
     p2 = ["good to see you", "nice to see you"]
-    p3 = ["your name", "who's there", "who are you", "your name"]
-    p4 = ["i am", "we are"]
+    p3 = ["your name", "who's there", "who are you", "your name", "who're you", "who's this"]
+    p4 = ["i am", "i'm", "iam", "we are", "my name"]
+	p5 = ["where are you from", "where do you come", "what are you going"]
     result = ""
     for w in p0:
         if w in text:
@@ -24,6 +25,10 @@ def get_welcome_msg(text, chunked_data):
         if w in text:
             result += " I am Jarvis."
             break
+	for w in p5:
+        if w in text:
+            result += " I am from Vietnam."
+            break
     for w in p4:
         if w in text:
 
@@ -38,9 +43,9 @@ def get_welcome_msg(text, chunked_data):
                 result = "Hello"
             print(len(name))
             if len(name) > 2:
-                result += " " + name[:-1] + "! I am Jarvis."
+                result += " " + name[:-1] + "! I am Jarvis. I can do so much things than you think."
             else:
-                result += " I am Jarvis."
+                result += " I am Jarvis, an AI system that build by Cao The Toan from VNIT.TOP"
             break
 
     print(result)

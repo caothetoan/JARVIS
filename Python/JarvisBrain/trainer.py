@@ -47,13 +47,13 @@ for mth in maths.split("\n"):
         if w[1][0] in allowed_word_types:
             all_words.append(w[0].lower())
 
-# for rand in random_things.split("\n"):
-#     documents.append((rand, "rand"))
-#     words = word_tokenize(rand)
-#     pos = nltk.pos_tag(words)
-#     for w in pos:
-#         if w[1][0] in allowed_word_types:
-#             all_words.append(w[0].lower())
+for rand in random_things.split("\n"):
+    documents.append((rand, "rand"))
+    words = word_tokenize(rand)
+    pos = nltk.pos_tag(words)
+    for w in pos:
+        if w[1][0] in allowed_word_types:
+            all_words.append(w[0].lower())
 
 print("Saving documents...")
 

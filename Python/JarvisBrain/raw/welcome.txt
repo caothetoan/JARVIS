@@ -1,4 +1,4 @@
-Hi! How are you?
+﻿Hi! How are you?
 How r u
 Hey! whats up
 What's up man. 
@@ -44,8 +44,11 @@ Hii
 hii
 helloo
 Hello
-Hi, I am Abhinav Tyagi
+Hi, I am Cao The Toan
 Hello, I am Tom
 Hey, my name is Jerry
-Hello, I am from India
+Hello, I am from Vietnam
+where are you from
+where do you come
+what are you going
 

@@ -81,4 +81,5 @@ $(function () {
         $('#chatBody').toggle();
         $("#btnHideChat span").toggleClass('fa-chevron-up');
     });
+    
 })
