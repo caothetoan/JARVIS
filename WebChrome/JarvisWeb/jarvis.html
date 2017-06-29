@@ -412,12 +412,13 @@
 					}
 					console.log("Interim-->" + interim_transcript);
 					console.log("Detected-->" + final_transcript);
-					if(final_transcript.length > 5 ){
+					if(final_transcript.length > 1 ){
 						getResult(final_transcript);
-						isListening = false;
-						document.getElementById("btn").innerHTML = 'Listen';
+						
 					}
 					detectedText.innerHTML = final_transcript;
+					isListening = false;
+						document.getElementById("btn").innerHTML = 'Listen';
 				}
 
 				recognition.onerror = function(event) {

@@ -65,12 +65,22 @@ var isListening = false;
 					}
 					console.log("Interim-->" + interim_transcript);
 					console.log("Detected-->" + final_transcript);
-					if(final_transcript.length > 5 ){
-						getResult(final_transcript);
-						isListening = false;
-						document.getElementById("btn").innerHTML = 'Listen';
+					if(final_transcript.length > 1 ){
+						getResult(final_transcript,
+							function(resp){
+								var reply = resp.response;
+								textToSpeech(reply);
+								document.getElementById("result").innerHTML = reply;
+							},
+							function(){
+								
+							}
+						);
+						
 					}
 					detectedText.innerHTML = final_transcript;
+					isListening = false;
+					document.getElementById("btn").innerHTML = 'Listen';
 				}
 
 				recognition.onerror = function(event) {
@@ -102,7 +112,7 @@ var isListening = false;
 			}
 		}
 		
-		function getResult(query) {
+		function getResult(query, success, error) {
 			
 			var query = '{"query":"'+query+'"}';
 			console.log('Query-->'+query);
@@ -111,9 +121,9 @@ var isListening = false;
 		        if (this.readyState == 4 && this.status == 200) {
 		        	console.log('Response-->'+this.responseText);
 		        	var resp = JSON.parse(this.responseText);
-		        	var reply = resp.response;
-		        	textToSpeech(reply);
-		            document.getElementById("result").innerHTML = reply;
+					if(success)
+						success(resp);
+		        	
 		       }
 		    };
 		    xhttp.open("POST", url, true);

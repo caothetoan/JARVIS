@@ -26,10 +26,12 @@
   <div class="navbar-header">
     <a class="navbar-brand" href="/"><i class="ion-ios7-pulse-strong"></i> Jarvis</a>
   </div>
+  
   <ul class="nav navbar-nav">
     <li><a href="/#/">Home</a></li>
-    <li ng-if="isAuthenticated()"><a href="/#/profile">Profile</a></li>
+    
   </ul>
+  <!--
   <ul ng-if="!isAuthenticated()" class="nav navbar-nav pull-right">
     <li><a href="/#/login">Login</a></li>
     <li><a href="/#/signup">Sign up</a></li>
@@ -37,6 +39,7 @@
   <ul ng-if="isAuthenticated()" class="nav navbar-nav pull-right">
     <li><a href="/#/logout">Logout</a></li>
   </ul>
+  -->
 </div>
 	<div class="container">
 		<div class="panel panel-default">
@@ -49,7 +52,7 @@
 		<div class="row">
 				
 				<div class="col-xs-12 text-center">
-					<h2 class="verb-title">I <span class="verb"></span> things.</h2>
+					<h2 class="verb-title"><span class="verb"></span>.</h2>
 				</div>
 				
 		</div>
@@ -93,19 +96,68 @@
 			  <a target="_blank" href="https://caothetoan.github.io">Cao The Toan</a> 
 			</p>
 		</div>	
+		
+		
 		<div class=" bot-page-body-right with-webchat">
-			<div class="wc-header"><span>Chat with JARVIS</span></div>
-			
-			<div class="wc-message-pane">
-				<div class="wc-message-groups">	
+			<div class="col-md-6">
+			<div class="panel panel-primary ">
+			<div class="panel-heading ">
+				 <span class="glyphicon glyphicon-comment"></span>
+				<span>Chat with JARVIS</span>
+				<div class="btn-group pull-right">
+                        <button id="btnHideChat" type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </button>
+                       
+                    </div>
+			</div>
+			<!-- 
+			wc-header
+			<div class="panel-body wc-message-pane">
+				<div class="chat wc-message-groups">	
 					<div id="conversation"></div>
 				</div>	
+			</div>-->
+			<div id="chatBody" role="dropdown">
+				<div class="panel-body panel-body-chat ">
+					<div class="chat">	
+						<div id="conversation"></div>
+					</div>	
+				</div>
+				<div class="panel-footer ">
+						<div class="input-group">
+							<div class=" col-md-2">
+							<span class="awsui-icon mic"></span>
+							<button class="btn btn-danger"						
+							
+							id="btnListen" onclick="btnClick()">Listen</button>
+							</div>
+							
+							<form id="chatform" style="margin-top: 10px" onsubmit="return pushChat();">
+							
+							
+							<div class=" col-md-8">
+							<input class="form-control input-sm" type="text" id="wisdom" size="80" value="" placeholder="Type anything...">
+							</div>
+							<div class=" col-md-2">
+							 <span class="input-group-btn">
+								<button type="submit" class="btn btn-primary " id="btn-chat">
+									Send</button>
+							</span>
+							</div>
+						</form>
+						</div>
+						   
+				</div>
 			</div>
-			<div class="wc-console">
+			</div>
+			</div>
+		</div>
+			<!--<div class="wc-console">
 			<form id="chatform" style="margin-top: 10px" onsubmit="return pushChat();">
-				<input class="col-md-12" type="text" id="wisdom" size="80" value="" placeholder="Type anything...">
+				<input class="form-control input-sm col-md-12" type="text" id="wisdom" size="80" value="" placeholder="Type anything...">
 			</form>
-			</div>
+			</div>-->
 		</div>
 	</div>
 		  
@@ -115,9 +167,9 @@
     </div>
     <div class="panel-footer text-center">
       <ul class="list-inline">
-        <li class="ng-binding"><i class="ion-star"></i> 8,048 stars</li>
-        <li class="ng-binding"><i class="ion-fork-repo"></i> 1,270 forks</li>
-        <li class="ng-binding"><i class="ion-pull-request"></i> 262 issues</li>
+        <li class="ng-binding"><i class="ion-star"></i> 999 stars</li>
+        <li class="ng-binding"><i class="ion-fork-repo"></i> </li>
+        <li class="ng-binding"><i class="ion-pull-request"></i> </li>
       </ul>
     </div>
   </div>
