@@ -1,6 +1,6 @@
 // dev by caothetoan
 
-var url = 'https://6ed07515.ngrok.io/jarvis'
+var url = 'https://2aa6ea43.ngrok.io/jarvis'
 // set the focus to the input box
 document.getElementById("wisdom").focus();
 

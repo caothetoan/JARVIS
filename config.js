@@ -1,0 +1,1 @@
+var url = 'https://2aa6ea43.ngrok.io/jarvis'
