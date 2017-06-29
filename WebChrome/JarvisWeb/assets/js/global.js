@@ -1,12 +1,13 @@
-
+// dev by caothetoan
 var commands = [
-	'I <span class="question">question</span> things',
+    "Hello, I'm Jarvis",
+    "I'm here to help you",
+    'I <span class="question">question</span> things',
 	'I <span class="make">make</span> things',
 	'I <span class="code">code</span> things',
-	
-	"Hello",
+
+    "There're the commands that you can request:",
 	"please turn on the lights",
-	
 "turn on the lamp",
 "switch on the lamp",
 "switch the lights off",
@@ -51,33 +52,33 @@ var commands = [
 
 ];
 
-function startTyping(){
-		$(".verb").typed({
-			//place space before strings otherwise doesnt render with html tags properly
-			strings: commands,
-			typeSpeed: 80,
-			backSpeed: 30,
-			backDelay: 1500,
-			loop: true,
-			showCursor: false,
-			preStringTyped: function(curStringPos){
+function startTyping() {
+    $(".verb").typed({
+        //place space before strings otherwise doesnt render with html tags properly
+        strings: commands,
+        typeSpeed: 80,
+        backSpeed: 30,
+        backDelay: 1500,
+        loop: true,
+        showCursor: false,
+        preStringTyped: function (curStringPos) {
 
-				//$('#carousel').carousel('next')
-				
-				if(curStringPos == 2){
-					// remove first blank png so that it doesnt show again
-					$("#placeholder-slide").remove();
-				}
-				
-			}
-		})
-	}
-	startTyping();
-	
-	
-$(function(){          
-            $("#btnHideChat").click(function () {
-          $('#chatBody').toggle();
-            });
- })
-	
+            //$('#carousel').carousel('next')
+
+            if (curStringPos == 2) {
+                // remove first blank png so that it doesnt show again
+                $("#placeholder-slide").remove();
+            }
+
+        }
+    })
+}
+startTyping();
+
+
+$(function () {
+    $("#btnHideChat").click(function () {
+        $('#chatBody').toggle();
+        $("#btnHideChat span").toggleClass('fa-chevron-up');
+    });
+})

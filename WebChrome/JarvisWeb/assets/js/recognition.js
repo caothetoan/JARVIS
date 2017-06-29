@@ -50,60 +50,69 @@ var isListening = false;
 					console.log("onstart...");
 				};
 
-				recognition.onresult = function(event) {
-					console.log("onresult...");
-					interim_transcript = '';
-					final_transcript = '';
-					result = '';
+				recognition.onresult = function (event) {
+				    console.log("onresult...");
+				    interim_transcript = '';
+				    final_transcript = '';
+				    result = '';
 
-					for (var i = event.resultIndex; i < event.results.length; ++i) {
-						if (event.results[i].isFinal) {
-							final_transcript += event.results[i][0].transcript;
-						} else {
-							interim_transcript += event.results[i][0].transcript;
-						}
-					}
-					console.log("Interim-->" + interim_transcript);
-					console.log("Detected-->" + final_transcript);
-					if(final_transcript.length > 1 ){
-						getResult(final_transcript,
-							function(resp){
-								var reply = resp.response;
-								textToSpeech(reply);
-								document.getElementById("result").innerHTML = reply;
-							},
-							function(){
-								
-							}
-						);
-						
-					}
-					detectedText.innerHTML = final_transcript;
-					isListening = false;
-					document.getElementById("btn").innerHTML = 'Listen';
+				    for (var i = event.resultIndex; i < event.results.length; ++i) {
+				        if (event.results[i].isFinal) {
+				            final_transcript += event.results[i][0].transcript;
+				        } else {
+				            interim_transcript += event.results[i][0].transcript;
+				        }
+				    }
+				    console.log("Interim-->" + interim_transcript);
+				    console.log("Detected-->" + final_transcript);
+				    if (final_transcript.length > 1) {
+				        getResult(final_transcript,
+                            function (resp) {
+                                var reply = resp.response;
+                                if (reply) {
+                                    textToSpeech(reply);
+                                    document.getElementById("result").innerHTML = reply;
+
+                                    if (showResponse) showResponse(reply);
+                                    //
+                                } else {
+                                    //
+                                    console.log("resp error--> resp" + resp);
+                                }
+
+                            },
+                            function () {
+
+                            }
+                        );
+
+				    }
+				    detectedText.innerHTML = final_transcript;
+				    isListening = false;
+				    document.getElementById("btn").innerHTML = 'Listen';
 				}
 
-				recognition.onerror = function(event) {
-					console.log("onerror...");
+				recognition.onerror = function (event) {
+				    console.log("onerror...");
 
-					if (event.error == 'no-speech') {
-						console.log('info_no_speech');
-						alert('no speech detected');
-					}
-					if (event.error == 'audio-capture') {
-						console.log('info_no_microphone');
-						alert('no microphone detected');
-					}
-					if (event.error == 'not-allowed') {
-						console.log('info_not_allowed');
-						if (event.timeStamp - start_timestamp < 100) {
-							console.log('info_blocked');
-							alert('info_blocked');
-						} else {
-							console.log('info_denied');
-							alert('denied');
-						}
-					}
+				    if (event.error == 'no-speech') {
+				        console.log('info_no_speech');
+				        alert('no speech detected');
+				    }
+				    if (event.error == 'audio-capture') {
+				        console.log('info_no_microphone');
+				        alert('no microphone detected');
+				    }
+				    if (event.error == 'not-allowed') {
+				        console.log('info_not_allowed');
+				        if (event.timeStamp - start_timestamp < 100) {
+				            console.log('info_blocked');
+				            alert('info_blocked');
+				        } else {
+				            console.log('info_denied');
+				            alert('denied');
+				        }
+				    }
 				};
 
 				recognition.onend = function() {
