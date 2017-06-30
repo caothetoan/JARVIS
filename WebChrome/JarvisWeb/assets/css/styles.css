@@ -7,7 +7,7 @@ body {
 
 #conversation {
     width: 100%;
-       
+    resize: vertical;
 }
 
 .panel-body-chat {
@@ -131,6 +131,23 @@ p.lexError {
     overflow: auto
 }
 
+@media (min-width: 768px) {
+    .direct-chat-messages {
+        height:250px
+    }
+}
+
+@media (min-width: 992px) {
+    .direct-chat-messages {
+        height:400px
+    }
+}
+
+@media (min-width: 1200px) {
+    .direct-chat-messages {
+        height:500px
+    }
+}
 .direct-chat-msg,.direct-chat-text {
     display: block
 }
