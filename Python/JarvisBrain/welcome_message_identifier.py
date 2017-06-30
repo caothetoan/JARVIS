@@ -15,19 +15,19 @@ def get_welcome_msg(text, chunked_data):
             break
     for w in p1:
         if w in text:
-            result += " I am good."
+            result = " I am good."
             break
     for w in p2:
         if w in text:
-            result += " me too."
+            result = " me too."
             break
     for w in p3:
         if w in text:
-            result += " I am Jarvis."
+            result = " I am Jarvis."
             break
     for w in p5:
         if w in text:
-            result += " I am from Vietnam."
+            result = " I am from Vietnam."
             break
     for w in p4:
         if w in text:

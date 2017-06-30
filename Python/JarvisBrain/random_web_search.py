@@ -84,7 +84,7 @@ def get_weather_info(query):
 
     #APPID=d9ce01906a466d5b7a74402fba00c9
     # http://api.openweathermap.org/data/2.5/weather?q=London&appid=XXXXX
-    url_endpoint = 'http://api.openweathermap.org/data/2.5/weather'
+    url_endpoint = 'http://samples.openweathermap.org/data/2.5/weather'
     param = {'q': query[:-1], 'appid': api_key}
     headers = {'Content-Type': 'application/json'}
 
@@ -103,16 +103,62 @@ def get_weather_info(query):
 
     return "Temperature is " + str(temp) + " degree celsius in " + query
 
+
+def get_translate_info(query):
+    for w in ["translate", "Translate", "translating", "translator", "meaning", "dictionary"]:
+        if w in query:
+            query = query.replace(w, "")
+            break
+
+
+    # Get Project Directory and config file path
+    project_dir = os.path.dirname(os.path.abspath(__file__))
+    config_filepath = os.path.join(project_dir, 'raw', 'keys.config')
+
+    # Read config file
+    config = configparser.RawConfigParser()
+    config.read(config_filepath)
+    print(config.sections())
+
+    # Get Weather API key
+    api_key = config.get('APIKeys', 'translate')
+    print(api_key)
+
+	langpair ='en-US|vi-VN'
+	api_user = 'haylamvietnam@gmail.com'
+	api_key = '2b8fb652eb85bf13858e'
+    # 
+    url_endpoint = 'http://api.mymemory.translated.net/get'
+    param = {'q': query[:-1], 'key': api_key, 'de': api_user, 'langpair': langpair}
+    headers = {'Content-Type': 'application/json'}
+
+    resp = requests.get(url_endpoint, params=param, headers=headers)
+    print("resp -> ", resp.json())
+    result_json = resp.json()
+
+    translatedText = result_json['responseData']['translatedText']
+    
+    print("Translate result  -> ", translatedText)
+
+    return "Translate result " + query + " meaning " +  str(translatedText)
+
+
 # function get web result main
 def get_web_result(text, typ):
     is_weather = False
+	is_translate = False
 
     for w in ["weather", "Weather", "temperature", "Temperature", "cold", "hot", "humid", "climate"]:
         if w in text:
             is_weather = True
             break
 
-    # tokenize and remove stop words
+    for w in ["translate", "Translate", "translating", "translator", "meaning", "dictionary"]:
+        if w in text:
+            is_translate = True
+            break
+
+	# tokenize and remove stop words
     tokenized = nltk.word_tokenize(text)
 
     stop_words = set(stopwords.words("english"))
@@ -133,6 +179,9 @@ def get_web_result(text, typ):
     result = ''
     if is_weather:
         result = get_weather_info(query)
+	elif:
+		if is_translate:
+			result = get_translate_info(query)
 
     if len(result) == 0:
         url_endpoint = 'https://www.duckduckgo.com'
