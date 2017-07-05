@@ -10,7 +10,7 @@ var AlexaSkill = require('./AlexaSkill');
 /**
  * URL for JARVIS service
  */
-var jarvis_url = 'https://6ed07515.ngrok.io/jarvis';//https://6ed07515.ngrok.io/jarvis
+var jarvis_url = 'https://8593cd24.ngrok.io/jarvis';//https://6ed07515.ngrok.io/jarvis
 
 var cardTitle = 'J.A.R.V.I.S.';
 
