@@ -70,34 +70,39 @@ def get_weather_info(query):
 
 
     # Get Project Directory and config file path
-    project_dir = os.path.dirname(os.path.abspath(__file__))
-    config_filepath = os.path.join(project_dir, 'raw', 'keys.config')
+    #project_dir = os.path.dirname(os.path.abspath(__file__))
+    #config_filepath = os.path.join(project_dir, 'raw', 'keys.config')
 
     # Read config file
-    config = configparser.RawConfigParser()
-    config.read(config_filepath)
-    print(config.sections())
+    #config = configparser.RawConfigParser()
+    #config.read(config_filepath)
+    #print(config.sections())
 
     # Get Weather API key
-    api_key = config.get('APIKeys', 'weather')
-    print(api_key)
+    #api_key = config.get('APIKeys', 'weather')
 
-    #APPID=d9ce01906a466d5b7a74402fba00c9
-    # http://api.openweathermap.org/data/2.5/weather?q=London&appid=XXXXX
-    url_endpoint = 'http://samples.openweathermap.org/data/2.5/weather'
-    param = {'q': query[:-1], 'appid': api_key}
+    api_key='62aca4fd993eabcae03ad8c6f9bc5dcc'
+    print("query -> ", query)
+    print("query[:-1] -> ", query[:-1])
+
+    # http://api.openweathermap.org/data/2.5/weather?q=London&appid=62aca4fd993eabcae03ad8c6f9bc5dcc
+    url_endpoint = 'http://api.openweathermap.org/data/2.5/weather'
+    param = {'q': query, 'appid': api_key}
     headers = {'Content-Type': 'application/json'}
 
     resp = requests.get(url_endpoint, params=param, headers=headers)
     print("resp -> ", resp.json())
     result_json = resp.json()
-    temp = result_json['main']['temp']
 
+    temp = 0
     try:
+        temp = result_json['main']['temp']
+
         temp -= 273
         temp = round(temp, 1)
     except:
-        return ""
+        print("except result_json['main']['temp']")
+        return "Temperature error"
 
     print("temp -> ", temp)
 
@@ -124,9 +129,9 @@ def get_translate_info(query):
     api_key = config.get('APIKeys', 'translate')
     print(api_key)
 
-	langpair ='en-US|vi-VN'
-	api_user = 'haylamvietnam@gmail.com'
-	api_key = '2b8fb652eb85bf13858e'
+    langpair ='en-US|vi-VN'
+    api_user = 'haylamvietnam@gmail.com'
+    api_key = '2b8fb652eb85bf13858e'
     # 
     url_endpoint = 'http://api.mymemory.translated.net/get'
     param = {'q': query[:-1], 'key': api_key, 'de': api_user, 'langpair': langpair}
@@ -146,7 +151,7 @@ def get_translate_info(query):
 # function get web result main
 def get_web_result(text, typ):
     is_weather = False
-	is_translate = False
+    is_translate = False
 
     for w in ["weather", "Weather", "temperature", "Temperature", "cold", "hot", "humid", "climate"]:
         if w in text:
@@ -169,29 +174,40 @@ def get_web_result(text, typ):
     tags = nltk.pos_tag(filtered_text)
     print("fitered tags -> ", tags)
 
-    allowed_word_types = ["N"]  # ["J", "R", "V", "N", "CD"]
+    allowed_word_types = ["J", "R", "V", "N", "CD"] # ["N"] 
 
     query = ""
     for w in tags:
         if w[1][0] in allowed_word_types:
             query += w[0] + " "
-
+    print("query = ", query)
+     
     result = ''
     if is_weather:
         result = get_weather_info(query)
-	elif:
-		if is_translate:
-			result = get_translate_info(query)
+    elif is_translate:
+	result = get_translate_info(query)
 
     if len(result) == 0:
+        #('query = ', '')
+
         url_endpoint = 'https://www.duckduckgo.com'
-        param = {'q': query[:-1], 'format': 'json', 't': 'h', 'ia': 'web'}
+        param = {'q': query, 'format': 'json', 't': 'h', 'ia': 'web'}
         headers = {'Content-Type': 'application/json'}
 
         resp = requests.get(url_endpoint, params=param, headers=headers)
-        print("resp -> ", resp.json())
-        result_json = resp.json()
 
+        print("resp = ", resp)
+        # ('resp = ', <Response [403]>)
+
+        # JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+        try:
+            result_json = resp.json()
+            print("resp json -> ", result_json)
+
+        except:
+            result_json = {}
+        
         # process json response from server search api
 	result = process_json(result_json, query, typ)
         print("result --> ", result)

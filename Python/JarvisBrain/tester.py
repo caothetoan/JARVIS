@@ -7,40 +7,40 @@ import text2num
 import classifier
 
 
-# print("1 -> wel", j.get_context("hello"))
-# print("2 -> wel", j.get_context("hi"))
-# print("3 -> cmd", j.get_context("hey! can you move up the ladder?"))
-# print("4 -> wel", j.get_context("hey, how are you today?"))
-# print("5 -> rand", j.get_context("how's today's weather"))
-# print("6 -> mth", j.get_context("hey, add three to 4"))
+print("1 -> wel", j.get_context("hello"))
+print("2 -> wel", j.get_context("hi"))
+print("3 -> cmd", j.get_context("hey! can you move up the ladder?"))
+print("4 -> wel", j.get_context("hey, how are you today?"))
+print("5 -> rand", j.get_context("how's today's weather"))
+print("6 -> mth", j.get_context("hey, add three to 4"))
 # print("7 -> mth", j.get_context("what is the result for 7 multiplied by 6"))
 # print("8 -> cmd", j.get_context("its dark in here"))
-# print("9 -> wel", j.get_context("hey man, What's your name"))
-# print("10 -> wel", j.get_context("I am Abhinav Tyagi. who are you?"))
-# print("11 -> wel", j.get_context("Yo! we are Vietnamese"))
+print("9 -> wel", j.get_context("hey man, What's your name"))
+print("10 -> wel", j.get_context("I am Cao The Toan. who are you?"))
+print("11 -> wel", j.get_context("Yo! we are Vietnamese"))
 # print("12 -> wel", j.get_context("I am Jack"))
 # print("13 -> rand", j.get_context("in India, where are dessert?")) #failed
 # print("14 -> rand", j.get_context("where was typewriter invented"))
 # print("15 -> cmd", j.get_context("please play a song for me"))
 # print("16 -> mth", j.get_context("please calculate 3*4/2-1"))
-# print("17 -> cmd", j.get_context("turn the rover to right"))
-# print("18 -> mth", j.get_context("what is 3 + 6 - 8 * 2 + 3 / 6"))
-# print("19 -> rand", j.get_context("where is Atlanta?"))
-# print("20 -> cmd", j.get_context("hey, please turn the volume down"))
-# print("21 -> rand", j.get_context("who are mammals")) #failed
+print("17 -> cmd", j.get_context("turn the rover to right"))
+print("18 -> mth", j.get_context("what is 3 + 6 - 8 * 2 + 3 / 6"))
+print("19 -> rand", j.get_context("where is Atlanta?"))
+print("20 -> cmd", j.get_context("hey, please turn the volume down"))
+print("21 -> rand", j.get_context("who is Obama")) #failed
 
 
 # print(classifier.classify("its dark in here"))
-# print(classifier.classify("hey man, What's your name"))
-# print(classifier.classify("hey man, I am Cao The Toan"))
+print(classifier.classify("hey man, What's your name"))
+print(classifier.classify("hey man, I am Cao The Toan"))
 # print(classifier.classify("Yo! we are Vietnamese"))
 # print(classifier.classify("I am Jack"))
 # print(classifier.classify("in India, where are dessert?"))
-# print(classifier.classify("please turn on the lights"))
+print(classifier.classify("please turn on the lights"))
 
 # print(classifier.classify("Uttar Pradesh"))
-print(classifier.classify("Who is Obama"))
-print(classifier.classify("Temperature in Hanoi"))
+#print(classifier.classify("Who is Obama"))
+#print(classifier.classify("Temperature London"))
 
 # subtract 4 from minus 3
 

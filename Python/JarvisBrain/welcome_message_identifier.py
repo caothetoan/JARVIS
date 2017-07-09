@@ -7,7 +7,7 @@ def get_welcome_msg(text, chunked_data):
     p2 = ["good to see you", "nice to see you"]
     p3 = ["your name", "who's there", "who are you", "your name", "who're you", "who's this"]
     p4 = ["i am", "i'm", "iam", "we are", "my name"]
-    p5 = ["where are you from", "where do you come", "what are you going"]
+    #p5 = ["where are you from", "where do you come", "what are you going"]
     result = ""
     for w in p0:
         if w in text:
@@ -25,10 +25,10 @@ def get_welcome_msg(text, chunked_data):
         if w in text:
             result = " I am Jarvis."
             break
-    for w in p5:
-        if w in text:
-            result = " I am from Vietnam."
-            break
+    #for w in p5:
+        #if w in text:
+            #result = " I am from Vietnam."
+            #break
     for w in p4:
         if w in text:
 
