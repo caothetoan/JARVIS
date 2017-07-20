@@ -19,20 +19,26 @@ def classify(text):
             return result, "mth"
     elif context[0] == 'wel' and context[1] >= 0.55:
         result = wel.get_greeting(text)
-        if len(result) > 0:
-            return result, "wel"
-        else:
+        #if len(result) > 0:
+        return result, "wel"
+        #else:
             # do random
-            result = rand_web.get_web_result(text, "wel")
-            return result, "wel"
+            #result = rand_web.get_web_result(text, "wel")
+            #return result, "wel"
     elif context[0] == 'cmd' and context[1] >= 0.55:
         result = cmd.get_command(text)
-        if len(result) > 0:
-            return result, "cmd"
-        else:
+        #if len(result) > 0:
+        return result, "cmd"
+        #else:
             # do random
-            result = rand_web.get_web_result(text, "cmd")
-            return result, "cmd"
-    else:  # context[0] == 'rand':
+            #result = rand_web.get_web_result(text, "cmd")
+            #return result, "cmd"
+    elif context[0] == 'rand' :
+        print("classifier case rand get_web_result")
         result = rand_web.get_web_result(text, "rand")
         return result, "rand"
+    
+    else:  # context[0] == 'rand':
+        print("classifier case else last get_greeting")
+        result = wel.get_greeting(text)
+        return result, "wel"

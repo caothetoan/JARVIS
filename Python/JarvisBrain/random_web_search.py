@@ -6,7 +6,7 @@ import os
 
 
 def process_json(json, query, typ):
-    print("result json-> ", json)
+    #print("result json-> ", json)
 
     # get answer result
     result = get_answer(json)
@@ -82,8 +82,8 @@ def get_weather_info(query):
     #api_key = config.get('APIKeys', 'weather')
 
     api_key='62aca4fd993eabcae03ad8c6f9bc5dcc'
-    print("query -> ", query)
-    print("query[:-1] -> ", query[:-1])
+    #print("query -> ", query)
+    #print("query[:-1] -> ", query[:-1])
 
     # http://api.openweathermap.org/data/2.5/weather?q=London&appid=62aca4fd993eabcae03ad8c6f9bc5dcc
     url_endpoint = 'http://api.openweathermap.org/data/2.5/weather'
@@ -118,16 +118,16 @@ def get_translate_info(query):
 
     # Get Project Directory and config file path
     project_dir = os.path.dirname(os.path.abspath(__file__))
-    config_filepath = os.path.join(project_dir, 'raw', 'keys.config')
+    #config_filepath = os.path.join(project_dir, 'raw', 'keys.config')
 
     # Read config file
-    config = configparser.RawConfigParser()
-    config.read(config_filepath)
-    print(config.sections())
+    #config = configparser.RawConfigParser()
+    #config.read(config_filepath)
+    #print(config.sections())
 
     # Get Weather API key
-    api_key = config.get('APIKeys', 'translate')
-    print(api_key)
+    #api_key = config.get('APIKeys', 'translate')
+    #print(api_key)
 
     langpair ='en-US|vi-VN'
     api_user = 'haylamvietnam@gmail.com'
@@ -197,13 +197,13 @@ def get_web_result(text, typ):
 
         resp = requests.get(url_endpoint, params=param, headers=headers)
 
-        print("resp = ", resp)
+        #print("resp = ", resp)
         # ('resp = ', <Response [403]>)
 
         # JSONDecodeError: Expecting value: line 1 column 1 (char 0)
         try:
             result_json = resp.json()
-            print("resp json -> ", result_json)
+            #print("resp json -> ", result_json)
 
         except:
             result_json = {}

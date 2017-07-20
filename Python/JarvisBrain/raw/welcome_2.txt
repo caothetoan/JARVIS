@@ -1,12 +1,3 @@
-hi
-Hi
-Hi hi
-Hii
-hii
-hello
-helo
-helloo
-Hello
 Hi! How are you?
 How r u
 Hey! whats up
@@ -28,9 +19,11 @@ Hey, How’s it going?
 What’s happening bro?
 How’ve you been?
 Hi How’ve you been?
+Hi
 Hello
 hello, what's your name
 hi! what is your name my friend?
+hi
 hello there
 hi there
 well hello
@@ -46,19 +39,12 @@ hi beautiful
 hello beautiful
 hey brother, good to see you
 hey man, how are you?
+Hi
+Hii
+hii
+helloo
+Hello
 Hi, I am Abhinav Tyagi
 Hello, I am Tom
 Hey, my name is Jerry
 Hello, I am from India
-hey man
-hi man
-hi you
-
-
-
-
-
-hi bot
-hi how are you
-hi who are you
-Hi there

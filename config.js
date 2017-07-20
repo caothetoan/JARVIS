@@ -1,1 +1,1 @@
-var url = 'https://af8666a3.ngrok.io/jarvis'
+var url = 'https://ddda5778.ngrok.io/jarvis'
