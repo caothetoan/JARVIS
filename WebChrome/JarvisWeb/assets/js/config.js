@@ -2,7 +2,7 @@
 const Configuration = {	
     themeName: "Bootrap",
     themeAdminName: "Jarvis",
-    rootApiUrl: "https://af8666a3.ngrok.io/jarvis",
+    rootApiUrl: "https://159f3bb0.ngrok.io/jarvis",
     adminUrlPathPrefix: "/",
     siteName: "Jarvis",
     siteSlogan: "Jarvis AI System",

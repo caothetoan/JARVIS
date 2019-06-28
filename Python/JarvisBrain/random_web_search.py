@@ -14,7 +14,7 @@ def process_json(json, query, typ):
         result = "Here's what I have found answer about " + query[:-1] + "! " + result
     else:
         # Definition
-	result = get_definition(json)
+        result = get_definition(json)
         if len(result) > 0:
             result = "Here's what I have found definition about " + query[:-1] + "! " + result
         else:
@@ -186,7 +186,7 @@ def get_web_result(text, typ):
     if is_weather:
         result = get_weather_info(query)
     elif is_translate:
-	result = get_translate_info(query)
+        result = get_translate_info(query)
 
     if len(result) == 0:
         #('query = ', '')
@@ -209,7 +209,7 @@ def get_web_result(text, typ):
             result_json = {}
         
         # process json response from server search api
-	result = process_json(result_json, query, typ)
+        result = process_json(result_json, query, typ)
         print("result --> ", result)
 
     return result
